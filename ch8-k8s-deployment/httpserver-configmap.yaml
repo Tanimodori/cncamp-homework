@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: httpserver-env
+data:
+  port: "8080"  
+  logging: "info"

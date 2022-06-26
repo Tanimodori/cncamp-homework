@@ -10,4 +10,4 @@ WORKDIR /home/
 COPY --from=build /home/build/httpserver /home/
 RUN chmod 755 ./httpserver
 ENTRYPOINT ./httpserver 
-EXPOSE 8888
+EXPOSE 8080

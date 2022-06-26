@@ -9,7 +9,7 @@ sudo docker build -t tanimodori/testserver .
 ## Run image
 
 ```bash
-sudo docker run --publish 6060:8888 --name test --rm tanimodori/testserver
+sudo docker run --publish 8080:8080 --name test --rm tanimodori/testserver
 ```
 
 ![Build and Run](CREATE_AND_RUN_IMAGE.png)
@@ -17,7 +17,7 @@ sudo docker run --publish 6060:8888 --name test --rm tanimodori/testserver
 ## Visit image
 
 ```bash
-wget -qO- localhost:6060/healthz
+wget -qO- localhost:8080/healthz
 ```
 
 ![Visit image](SERVER_CALL.png)

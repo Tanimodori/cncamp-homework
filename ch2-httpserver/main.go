@@ -11,7 +11,7 @@ import (
 
 func main() {
 	var port = ":8080"
-	http.HandleFunc("/delay", delay)
+	http.HandleFunc("/metrics", delay)
 	http.HandleFunc("/healthz", healthzHandler)
 	fmt.Println("Starting http server listening at", port)
 	http.ListenAndServe(port, nil)

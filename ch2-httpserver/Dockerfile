@@ -1,6 +1,7 @@
 FROM golang:1.18.1 as build
 MAINTAINER Tanimodori
 
+ENV GO111MODULE=on
 WORKDIR /home/ 
 COPY ./go.mod ./go.sum ./main.go ./metrics/metrics.go ./
 RUN go get -u -v -d

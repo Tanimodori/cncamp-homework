@@ -3,7 +3,7 @@ MAINTAINER Tanimodori
 
 WORKDIR /home/ 
 COPY ./go.mod ./go.sum ./main.go ./metrics/metrics.go ./
-RUN go get -u -v
+RUN go get -u -v -d
 RUN go build -o ./build/httpserver main.go 
 
 FROM debian:stable-slim 

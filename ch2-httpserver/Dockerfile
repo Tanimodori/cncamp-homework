@@ -2,7 +2,7 @@ FROM golang:1.18.1 as build
 MAINTAINER Tanimodori
 
 WORKDIR /home/ 
-COPY ./go.mod ./main.go ./
+COPY ./go.mod ./go.sum ./main.go ./metrics/metrics.go ./
 RUN go build -o ./build/httpserver main.go 
 
 FROM debian:stable-slim 

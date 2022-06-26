@@ -3,7 +3,7 @@ MAINTAINER Tanimodori
 
 ENV GO111MODULE=on
 WORKDIR /home/ 
-COPY ./go.mod ./go.sum ./main.go ./metrics/metrics.go ./
+ADD . /home/ 
 RUN go get -u -v
 RUN go build -o ./build/httpserver main.go 
 

@@ -3,18 +3,27 @@ package main
 import (
 	"fmt"
 	"httpserver/metrics"
+	"log"
 	"math/rand"
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
 	var port = ":8080"
-	http.HandleFunc("/metrics", delay)
-	http.HandleFunc("/healthz", healthzHandler)
+	metrics.Register()
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("/delay", delay)
+	mux.Handle("/metrics", promhttp.Handler())
+	mux.HandleFunc("/healthz", healthzHandler)
 	fmt.Println("Starting http server listening at", port)
-	http.ListenAndServe(port, nil)
+	if err := http.ListenAndServe(port, mux); err != nil {
+		log.Fatalf("start http server failed, error: %s\n", err.Error())
+	}
 }
 
 func healthzHandler(w http.ResponseWriter, r *http.Request) {
